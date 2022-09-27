@@ -88,6 +88,20 @@ export default function App() {
     setStoreItems([...initialStoreItems])
   }
 
+  const sortAscending = criteria => {
+    const sortedItems = storeItems.sort((a, b) =>
+      a[criteria] > b[criteria] ? 1 : -1
+    )
+    setStoreItems([...sortedItems])
+  }
+
+  const sortDescending = criteria => {
+    const sortedItems = storeItems.sort((a, b) =>
+      a[criteria] < b[criteria] ? 1 : -1
+    )
+    setStoreItems([...sortedItems])
+  }
+
   return (
     <>
       <header id="store">
@@ -96,7 +110,20 @@ export default function App() {
           Filter by:
           <button onClick={e => filterStoreby('Fruit')}>Fruit</button>
           <button onClick={e => filterStoreby('Vegetable')}>Vegetables</button>
-          <button onClick={e => resetFilter()}>Reset filter</button>
+          <button onClick={e => resetFilter()}>Reset filter/sorting</button>
+        </p>
+        <p className="filters">
+          Sort by:
+          <button onClick={e => sortAscending('price')}>
+            Price descending
+          </button>
+          <button onClick={e => sortDescending('price')}>
+            Price Ascending
+          </button>
+          <button onClick={e => sortAscending('name')}>Alphabetic order</button>
+          <button onClick={e => sortDescending('name')}>
+            Reverse alphabetic order
+          </button>
         </p>
 
         <ul className="item-list store--item-list">
