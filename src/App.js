@@ -37,10 +37,17 @@ export default function App() {
       itemInCart.quantity++
       setCartItems([...cartItems])
     } else {
-      let newItem = { ...foundItemInStore }
-      newItem.quantity = 1
-      setCartItems([...cartItems, newItem])
+      let newCartItem = { ...foundItemInStore, quantity: 1 }
+      setCartItems([...cartItems, newCartItem])
     }
+  }
+
+  const calculateTotalPrice = () => {
+    let currentTotal = 0
+    cartItems.map(itemInCart => {
+      currentTotal += itemInCart.quantity * itemInCart.price
+    })
+    return currentTotal.toFixed(2)
   }
 
   return (
@@ -80,7 +87,7 @@ export default function App() {
             <h3>Total</h3>
           </div>
           <div>
-            <span className="total-number">£0.00</span>
+            <span className="total-number">£{calculateTotalPrice()}</span>
           </div>
         </div>
       </main>
