@@ -1,7 +1,9 @@
 import './styles/reset.css'
 import './styles/index.css'
 
+import { useState } from 'react'
 import initialStoreItems from './store-items'
+import StoreItem from './components/StoreItem'
 
 /*
 Here's what a store item should look like
@@ -14,24 +16,33 @@ Here's what a store item should look like
 What should a cart item look like? 🤔
 */
 
-console.log(initialStoreItems)
+// console.log(initialStoreItems)
 
 export default function App() {
   // Setup state here...
+  const [storeItems, setStoreItems] = useState(initialStoreItems)
 
+  console.log(storeItems)
   return (
     <>
       <header id="store">
         <h1>Greengrocers</h1>
         <ul className="item-list store--item-list">
-          {/* Wrtite some code here... */}
+          {storeItems.map(item => (
+            <StoreItem
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              price={item.price}
+            />
+          ))}
         </ul>
       </header>
       <main id="cart">
         <h2>Your Cart</h2>
         <div className="cart--item-list-container">
           <ul className="item-list cart--item-list">
-            {/* Wrtite some code here... */}
+            {/* Write some code here... */}
           </ul>
         </div>
         <div className="total-section">

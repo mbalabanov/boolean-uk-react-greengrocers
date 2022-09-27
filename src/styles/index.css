@@ -1,9 +1,9 @@
-@import "./reset.css";
+@import './reset.css';
 
 /* Typography */
 
 body {
-  font-family: "Trebuchet MS", "Lucida Sans", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans', Arial, sans-serif;
 }
 
 h1,
@@ -49,8 +49,13 @@ button {
 }
 
 .store--item-icon {
+  text-align: center;
   width: 125px;
-  height: 125px;
+  height: 200px;
+}
+
+.store--item-name {
+  text-transform: capitalize;
 }
 
 @media only screen and (max-width: 600px) {
