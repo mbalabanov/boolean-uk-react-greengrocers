@@ -50,6 +50,33 @@ export default function App() {
     return currentTotal.toFixed(2)
   }
 
+  const increaseItemQuantity = targetId => {
+    const idToIncrease = targetId.split('_')
+
+    const itemInCart = cartItems.find(itemInCart => {
+      return itemInCart.id === idToIncrease[1]
+    })
+    itemInCart.quantity++
+    setCartItems([...cartItems])
+  }
+
+  const decreaseItemQuantity = targetId => {
+    const idToDecrease = targetId.split('_')
+
+    const itemInCart = cartItems.find(itemInCart => {
+      return itemInCart.id === idToDecrease[1]
+    })
+    itemInCart.quantity--
+    if (itemInCart.quantity === 0) {
+      const reducedCart = cartItems.filter(itemInCart => {
+        return itemInCart.id !== idToDecrease[1]
+      })
+      setCartItems([...reducedCart])
+    } else {
+      setCartItems([...cartItems])
+    }
+  }
+
   return (
     <>
       <header id="store">
@@ -78,6 +105,7 @@ export default function App() {
                 price={itemInCart.price}
                 quantity={itemInCart.quantity}
                 addItemToCart={addItemToCart}
+                actions={{ increaseItemQuantity, decreaseItemQuantity }}
               />
             ))}
           </ul>
