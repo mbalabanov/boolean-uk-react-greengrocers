@@ -77,10 +77,28 @@ export default function App() {
     }
   }
 
+  const filterStoreby = filterType => {
+    const filteredStore = initialStoreItems.filter(itemInStore => {
+      return itemInStore.type === filterType
+    })
+    setStoreItems([...filteredStore])
+  }
+
+  const resetFilter = () => {
+    setStoreItems([...initialStoreItems])
+  }
+
   return (
     <>
       <header id="store">
         <h1>Greengrocers</h1>
+        <p className="filters">
+          Filter by:
+          <button onClick={e => filterStoreby('Fruit')}>Fruit</button>
+          <button onClick={e => filterStoreby('Vegetable')}>Vegetables</button>
+          <button onClick={e => resetFilter()}>Reset filter</button>
+        </p>
+
         <ul className="item-list store--item-list">
           {storeItems.map(itemInStore => (
             <StoreItem
