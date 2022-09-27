@@ -1,15 +1,15 @@
-function CartItem(product) {
+function CartItem(props) {
   return (
     <li>
       <img
-        class="cart--item-icon"
-        src="assets/icons/001-beetroot.svg"
-        alt="beetroot"
+        className="cart--item-icon"
+        src={`assets/icons/${props.id}.svg`}
+        alt={props.name}
       />
-      <p>beetroot</p>
-      <button class="quantity-btn remove-btn center">-</button>
-      <span class="quantity-text center">1</span>
-      <button class="quantity-btn add-btn center">+</button>
+      <p>{props.name}</p>
+      <button className="quantity-btn remove-btn center">-</button>
+      <span className="quantity-text center">{props.quantity}</span>
+      <button className="quantity-btn add-btn center">+</button>
     </li>
   )
 }

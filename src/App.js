@@ -4,6 +4,7 @@ import './styles/index.css'
 import { useState } from 'react'
 import initialStoreItems from './store-items'
 import StoreItem from './components/StoreItem'
+import CartItem from './components/CartItem'
 
 /*
 Here's what a store item should look like
@@ -21,19 +22,39 @@ What should a cart item look like? 🤔
 export default function App() {
   // Setup state here...
   const [storeItems, setStoreItems] = useState(initialStoreItems)
+  const [cartItems, setCartItems] = useState([])
 
-  console.log(storeItems)
+  const addItemToCart = targetItem => {
+    const foundItemInStore = storeItems.find(itemInStore => {
+      return itemInStore.id === targetItem.target.id
+    })
+
+    const itemInCart = cartItems.find(itemInCart => {
+      return itemInCart.id === targetItem.target.id
+    })
+
+    if (itemInCart) {
+      itemInCart.quantity++
+      setCartItems([...cartItems])
+    } else {
+      let newItem = { ...foundItemInStore }
+      newItem.quantity = 1
+      setCartItems([...cartItems, newItem])
+    }
+  }
+
   return (
     <>
       <header id="store">
         <h1>Greengrocers</h1>
         <ul className="item-list store--item-list">
-          {storeItems.map(item => (
+          {storeItems.map(itemInStore => (
             <StoreItem
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              price={item.price}
+              key={itemInStore.id}
+              id={itemInStore.id}
+              name={itemInStore.name}
+              price={itemInStore.price}
+              addItemToCart={addItemToCart}
             />
           ))}
         </ul>
@@ -42,7 +63,16 @@ export default function App() {
         <h2>Your Cart</h2>
         <div className="cart--item-list-container">
           <ul className="item-list cart--item-list">
-            {/* Write some code here... */}
+            {cartItems.map(itemInCart => (
+              <CartItem
+                key={itemInCart.id}
+                id={itemInCart.id}
+                name={itemInCart.name}
+                price={itemInCart.price}
+                quantity={itemInCart.quantity}
+                addItemToCart={addItemToCart}
+              />
+            ))}
           </ul>
         </div>
         <div className="total-section">
