@@ -14,7 +14,7 @@ Here's what a store item should look like
   price: 0.35
 }
 
-What should a cart item look like? 🤔
+What should a cart item look like?
 */
 
 // console.log(initialStoreItems)
@@ -102,26 +102,40 @@ export default function App() {
     setStoreItems([...sortedItems])
   }
 
+  const toggleDetails = targetItemId => {
+    const updatedItemShowSecrets = allItems =>
+      storeItems.map(eachItem =>
+        eachItem.id === targetItemId
+          ? { ...eachItem, showSecret: !eachItem.showSecret }
+          : eachItem
+      )
+    setStoreItems(updatedItemShowSecrets)
+  }
+
   return (
     <>
       <header id="store">
         <h1>Greengrocers</h1>
         <p className="filters">
           Filter by:
-          <button onClick={e => filterStoreby('Fruit')}>Fruit</button>
-          <button onClick={e => filterStoreby('Vegetable')}>Vegetables</button>
-          <button onClick={e => resetFilter()}>Reset filter/sorting</button>
+          <button onClick={event => filterStoreby('Fruit')}>Fruit</button>
+          <button onClick={event => filterStoreby('Vegetable')}>
+            Vegetables
+          </button>
+          <button onClick={event => resetFilter()}>Reset filter/sorting</button>
         </p>
         <p className="filters">
           Sort by:
-          <button onClick={e => sortAscending('price')}>
+          <button onClick={event => sortAscending('price')}>
             Price descending
           </button>
-          <button onClick={e => sortDescending('price')}>
+          <button onClick={event => sortDescending('price')}>
             Price Ascending
           </button>
-          <button onClick={e => sortAscending('name')}>Alphabetic order</button>
-          <button onClick={e => sortDescending('name')}>
+          <button onClick={event => sortAscending('name')}>
+            Alphabetic order
+          </button>
+          <button onClick={event => sortDescending('name')}>
             Reverse alphabetic order
           </button>
         </p>
@@ -132,8 +146,11 @@ export default function App() {
               key={itemInStore.id}
               id={itemInStore.id}
               name={itemInStore.name}
+              secret={itemInStore.secret}
+              showSecret={itemInStore.showSecret}
               price={itemInStore.price}
               addItemToCart={addItemToCart}
+              toggleDetails={toggleDetails}
             />
           ))}
         </ul>

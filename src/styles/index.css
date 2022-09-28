@@ -51,7 +51,7 @@ button {
 .store--item-icon {
   text-align: center;
   width: 140px;
-  height: 200px;
+  height: 260px;
 }
 
 .store--item-name {
@@ -183,6 +183,15 @@ button {
 
 .filters {
   text-align: center;
+}
+
+.secret {
+  font-size: 0.8rem;
+  line-height: 0.9rem;
+  padding: 0.4rem;
+  background-color: antiquewhite;
+  border: #00675b 1px solid;
+  border-radius: 0.4rem;
 }
 
 @media only screen and (max-width: 450px) {
