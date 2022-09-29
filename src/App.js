@@ -104,10 +104,10 @@ export default function App() {
 
   const toggleDetails = targetItemId => {
     const updatedItemShowSecrets = allItems =>
-      storeItems.map(eachItem =>
-        eachItem.id === targetItemId
-          ? { ...eachItem, showSecret: !eachItem.showSecret }
-          : eachItem
+      storeItems.map(individualItem =>
+        individualItem.id === targetItemId
+          ? { ...individualItem, showSecret: !individualItem.showSecret }
+          : individualItem
       )
     setStoreItems(updatedItemShowSecrets)
   }

@@ -3,7 +3,7 @@ const storeItems = [
     id: '001-beetroot',
     name: 'beetroot',
     type: 'Vegetable',
-    secret: 'This is the root to beet if you want to beet roots!',
+    secret: 'This is the root to beet if you want to beet some root!',
     showSecret: false,
     price: 0.35
   },
@@ -34,7 +34,7 @@ const storeItems = [
   {
     id: '005-avocado',
     name: 'avocado',
-    secret: 'Often confused with a Spanish lawyer',
+    secret: 'Often confused with a Spanish lawyer.',
     showSecret: false,
     type: 'Vegetable',
     price: 0.45
@@ -43,7 +43,7 @@ const storeItems = [
     id: '006-bananas',
     name: 'bananas',
     type: 'Fruit',
-    secret: 'The best packaging comes from mother nature',
+    secret: 'The best packaging comes from mother nature.',
     showSecret: false,
     price: 0.46
   },
@@ -51,7 +51,7 @@ const storeItems = [
     id: '007-bell-pepper',
     name: 'bell pepper',
     type: 'Vegetable',
-    secret: 'You can ring my bell',
+    secret: 'Hey Pepper! You can ring my bell!',
     showSecret: false,
     price: 0.47
   },
@@ -59,7 +59,7 @@ const storeItems = [
     id: '008-berry',
     name: 'berry',
     type: 'Fruit',
-    secret: 'Berry berrific!',
+    secret: 'Berries are berry, berry berrifically berrific!',
     showSecret: false,
     price: 0.28
   },
@@ -67,7 +67,7 @@ const storeItems = [
     id: '009-blueberry',
     name: 'blueberry',
     type: 'Fruit',
-    secret: 'Its not easy being blue.',
+    secret: 'Some say, its not easy being blue.',
     showSecret: false,
     price: 0.29
   },
